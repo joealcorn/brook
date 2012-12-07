@@ -96,5 +96,81 @@ def IssuesEvent(event):
 
     return info
 
+
+@event_handler
+def CreateEvent(event):
+    info = {
+        'ref_type': event['payload']['ref_type'],
+        'ref': event['payload']['ref'],
+        'repo': event['repo']['name']
+    }
+
+    return info
+
+
+@event_handler
+def DeleteEvent(event):
+    info = {
+        'ref_type': event['payload']['ref_type'],
+        'ref': event['payload']['ref'],
+        'repo': event['repo']['name']
+    }
+
+    return info
+
+
+@event_handler
+def ForkEvent(event):
+    info = {
+        'forked_from': event['repo']['name']
+    }
+
+    try:
+        d = {'fork': event['payload']['forkee']['full_name']}
+    except KeyError:
+        # fullname is not always in json
+        actor = event['actor']['login']
+        repo = event['payload']['forkee']['name']
+        d = {'fork': '{0}/{1}'.format(actor, repo)}
+
+    info.update(d)
+
+    return info
+
+
+@event_handler
+def PullRequestEvent(event):
+    info = {
+        'action': event['payload']['action'],
+        'number': event['payload']['number'],
+        'repo': event['repo']['name']
+    }
+
+    return info
+
+
+@event_handler
+def IssueCommentEvent(event):
+    info = {
+        'action': event['payload']['action'],
+        'repo': event['repo']['name'],
+        'number': event['payload']['issue']['number'],
+        'comment_id': event['payload']['comment']['id']
+    }
+
+    return info
+
+
+@event_handler
+def GistEvent(event):
+    info = {
+        'action': event['payload']['action'],
+        'gist_url': event['payload']['gist']['html_url'],
+        'gist_id': event['payload']['gist']['id']
+    }
+
+    return info
+
+
 # Register our plugin
 GitHub('GitHub')

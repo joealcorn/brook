@@ -45,6 +45,47 @@
         </li>
     </ul>
 
+{% elif e.info.type == 'CreateEvent' %}
+
+    {% if e.info.ref_type == 'repository' %}
+
+        <p class="event-title">created new repo at <a href="https://github.com/{{ e.info.repo }}/">{{ e.info.repo }}</a>
+
+    {% elif e.info.ref_type == 'branch' %}
+
+        <p class="event-title">created new branch <a href="https://github.com/{{ e.info.repo }}/tree/{{ e.info.ref }}">{{ e.info.ref }}</a>
+        at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+
+    {% endif %}
+        <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+{% elif e.info.type == 'DeleteEvent' %}
+
+    <p class="event-title">deleted branch {{ e.info.ref }} at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+{% elif e.info.type == 'ForkEvent' %}
+
+    <p class="event-title">forked <a href="https://github.com/{{ e.info.forked_from }}">{{ e.info.forked_from }}</a>
+    to <a href="https://github.com/{{ e.info.fork }}">{{ e.info.fork }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+{% elif e.info.type == 'PullRequestEvent' %}
+
+    <p class="event-title">{{ e.info.action }} pull request <a href="https://github.com/{{ e.info.repo }}/pull/{{ e.info.number }}">
+    #{{ e.info.number }}</a> on <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+{% elif e.info.type == 'IssueCommentEvent' %}
+
+    <p class="event-title">commented on issue <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}#issuecomment-{{ e.info.comment_id }}">#{{ e.info.number }}</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+{% elif e.info.type == 'GistEvent' %}
+
+    <p class="event-title">{{ e.info.action }}d gist <a href="{{ e.info.gist_url }}">#{{ e.info.gist_id }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
 
 {% endif %}
 
