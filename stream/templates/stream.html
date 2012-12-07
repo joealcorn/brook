@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block head %}
+    <script src="{{ url_for('static', filename='js/timeago.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+          $('.timestamp').timeago()
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <ul id="brook">
+        {% for e in events %}
+            <li class="wrap-event {{ e.service }}" style="background: url('static/icons/{{ e.service }}.ico') no-repeat 0px 1px;">
+                <div>
+                    {% include ['services/' + e.service + '.html'] ignore missing %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

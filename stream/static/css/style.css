@@ -1,0 +1,95 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #313238;
+}
+
+body, html {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #B2BADD;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    font-size: 1.25em;
+}
+
+
+li {
+    list-style-type: none;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #FFF5EE;
+    position: absolute;
+}
+
+#title {
+    font-size: 1.5em;
+}
+
+
+#left-panel, #right-panel {
+    padding-top: 70px;
+    position: absolute;
+}
+
+#left-panel {
+    width: 180px;
+    text-align: right;
+    padding-left: 20px;
+    padding-right: 15px;
+}
+
+
+#right-panel {
+    width: 100%;
+    background-color: #292A30;
+    border-left: 3px solid #68536F;
+    left: 215px;
+}
+
+.list-header {
+    margin-top: 35px;
+}
+
+.timestamp {
+    color: #686F82;
+}
+
+ul#brook {
+    padding-left: 20px;
+}
+
+li.wrap-event div {
+    /* This positions the icon correctly-ish */
+    margin-left: 25px;
+
+    line-height: 16px;
+    margin-bottom: 25px;
+}
+
+p.event-title {
+    font-size: 0.89em;
+}
+
+span.event {
+    font-size: 12px;
+    color: #686F82;
+}
+
+li.event {
+    list-style-type: none;
+    padding-bottom: 0px;
+    margin-bottom: 2px;
+}

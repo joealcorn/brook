@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>{{ config.TITLE }}</title>
+
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+
+    <div id="container">
+
+        <div id="left-panel" class="panel">
+            <a href="{{ url_for('index') }}"><span id="title">buttscicles</span></a>
+
+            <p class="list-header">places</p>
+            <ul class="side-list">
+                <li><a href="https://github.com/buttscicles/">github</a></li>
+                <li><a href="https://twitter.com/buttscicles">twitter</a></li>
+                <li><a href="http://www.reddit.com/user/buttscicles">reddit</a></li>
+                <li><a href="https://steamcommunity.com/id/buttscicles/">steam</a>
+            </ul>
+
+            <p class="list-header">things</p>
+            <ul>
+                <li><a href="http://paste.buttscicl.es/">pastebin</a></li>
+                <li><a href="https://github.com/buttscicles/brook/">brook</a></li>
+            </ul>
+
+        </div>
+
+
+        <div id="right-panel" class="panel">
+            {% block body %}{% endblock %}
+        </div>
+
+
+    </div>
+
+</body>
+</html>

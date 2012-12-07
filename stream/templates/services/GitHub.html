@@ -1,0 +1,50 @@
+{% if e.info.type == 'PushEvent' %}
+
+    <p class="event-title">pushed {{ e.info.amount }}
+    {% if e.info.amount == 1 %}commit{% else %}commits{% endif %}
+    to <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+
+    <ul>
+        {% for c in e.info.commits %}
+        <li class="event">
+            <a href="https://github.com/{{ e.info.repo }}/commit/{{ c.sha }}">
+                <span class="event">
+                    {{ c.message|truncate(length=100) }}
+                </span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% elif e.info.type == 'WatchEvent' %}
+
+    <p class="event-title">{% if e.info.action == 'started' %}starred{% else %}unstarred{% endif %}
+     <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+{% elif e.info.type == 'FollowEvent' %}
+
+    <p class="event-title">followed <a href="https://github.com/{{ e.info.user }}">{{ e.info.user }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+{% elif e.info.type == 'IssuesEvent' %}
+
+    <p class="event-title">{{ e.info.action }} issue <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}">#{{ e.info.number }}</a>
+    on <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+    <ul>
+        <li class="event">
+            <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}">
+                <span class="event">
+                    {{ e.info.title|truncate(length=100) }}
+                </span>
+            </a>
+        </li>
+    </ul>
+
+
+{% endif %}
+
