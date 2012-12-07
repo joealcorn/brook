@@ -32,6 +32,7 @@ li {
     font-family: 'Open Sans', sans-serif;
     color: #FFF5EE;
     position: absolute;
+    background-color: #313238;
 }
 
 #title {
@@ -41,10 +42,11 @@ li {
 
 #left-panel, #right-panel {
     padding-top: 70px;
-    position: absolute;
+    padding-bottom: 10px;
 }
 
 #left-panel {
+    position: absolute;
     width: 180px;
     text-align: right;
     padding-left: 20px;
@@ -53,7 +55,7 @@ li {
 
 
 #right-panel {
-    width: 100%;
+    margin-left: 215px;
     background-color: #292A30;
     border-left: 3px solid #68536F;
     left: 215px;
