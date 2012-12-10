@@ -11,10 +11,11 @@ DATABASE = ''
 
 DEBUG = False
 SECRET_KEY = ''
+EVENT_AMOUNT = 30
+
 
 # Title of generated HTML pages
 TITLE = 'buttscicles'
-
 
 # Plugin configuration
 

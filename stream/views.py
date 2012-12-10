@@ -1,16 +1,54 @@
 import sys
 import json
+from datetime import datetime
 sys.path.append('..')
 
-from flask import render_template
+from flask import render_template, jsonify, make_response, request, url_for, redirect
 
-from stream import app, Brook
+from stream import app, Brook as b
 
 
 @app.route('/')
 def index():
-    events = Brook.query.order_by(Brook.time.desc()).limit(30).all()
+    times = []
+    events = b.query.order_by(b.time.desc()).limit(app.config['EVENT_AMOUNT']).all()
+
     for event in events:
         event.info = json.loads(event.info)
+        times.append(event.time)
 
-    return render_template('stream.html', events=events)
+    r = make_response(render_template('stream.html', events=events))
+    r.set_cookie('last_event',  max(times))
+    return r
+
+
+@app.route('/update')
+def update():
+    last_event = request.cookies.get('last_event')
+    if last_event is None:
+        return redirect(url_for('index'))
+
+    last_event = datetime.strptime(last_event, '%Y-%m-%d %H:%M:%S')
+
+    events = b.query.order_by(b.time.desc()).filter(b.time > last_event).limit(
+        app.config['EVENT_AMOUNT']).all()
+
+    times = []
+    info = {'events': []}
+
+    for event in events:
+        times.append(event.time)
+        event.info = json.loads(event.info)
+        info['events'].append({
+            'service': event.service,
+            'html': render_template('services/{0}.html'.format(event.service), e=event)
+        })
+
+    info['amount'] = len(info['events'])
+
+    if events == []:
+        return jsonify(info)
+    else:
+        r = make_response(jsonify(info))
+        r.set_cookie('last_event',  max(times))
+        return r
