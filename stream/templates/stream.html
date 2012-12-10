@@ -12,7 +12,7 @@
 
     <ul id="brook">
         {% for e in events %}
-            <li class="wrap-event {{ e.service }}" style="background: url('static/icons/{{ e.service }}.ico') no-repeat 0px 1px;">
+            <li class="wrap-event {{ e.service }}">
                 <div>
                     {% include ['services/' + e.service + '.html'] ignore missing %}
                 </div>

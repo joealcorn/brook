@@ -95,3 +95,10 @@ li.event {
     padding-bottom: 0px;
     margin-bottom: 2px;
 }
+
+
+/* Services */
+
+.GitHub {
+    background: url('/static/icons/GitHub.ico') no-repeat 0px 1px;"
+}
