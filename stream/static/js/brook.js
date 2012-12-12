@@ -4,11 +4,11 @@ function update() {
         if (data.amount != 0){
             var html = '';
 
-            for (var i = 0; i < data.amount; i++){
+            for (i in data.events) {
                 html += '<li class="wrap-event '+ data.events[i].service + '"><div>' + data.events[i].html +'</div></li>';
             };
             $('#brook').prepend(html);
-            $('.timestamp').timeago();
+            $('.timestamp').timeago('refresh');
         };
     });
 };
