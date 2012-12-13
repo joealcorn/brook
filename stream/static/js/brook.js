@@ -1,4 +1,4 @@
-var interval = 1000 * 60 * 5; //5 Minutes
+var interval = 1000 * 45; // 45 Seconds
 function update() {
     $.getJSON('/update', function(data) {
         if (data.amount != 0){
