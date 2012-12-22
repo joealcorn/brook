@@ -1,11 +1,11 @@
-body {
+body,
+ul {
     padding: 0;
     margin: 0;
-    background-color: #313238;
 }
 
-body, html {
-    height: 100%;
+body {
+    background-color: #313238;
 }
 
 a {
@@ -20,7 +20,6 @@ a:hover {
 p {
     font-size: 1.25em;
 }
-
 
 li {
     list-style-type: none;
@@ -58,7 +57,6 @@ li {
     margin-left: 215px;
     background-color: #292A30;
     border-left: 3px solid #68536F;
-    left: 215px;
 }
 
 .list-header {
@@ -83,6 +81,7 @@ li.wrap-event div {
 
 p.event-title {
     font-size: 0.89em;
+    margin: 9px 0 2px;
 }
 
 span.event {
