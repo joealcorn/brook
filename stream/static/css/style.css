@@ -39,7 +39,7 @@ li {
 }
 
 
-#left-panel, #right-panel {
+.panel {
     padding-top: 70px;
     padding-bottom: 10px;
 }
