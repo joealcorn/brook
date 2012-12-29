@@ -10,7 +10,7 @@
         {% for c in e.info.commits %}
         <li class="event">
             <a href="https://github.com/{{ e.info.repo }}/commit/{{ c.sha }}">
-                <span class="event">
+                <span class="event" title="{{ c.message }}">
                     {{ c.message|truncate(length=100) }}
                 </span>
             </a>
@@ -38,7 +38,7 @@
     <ul>
         <li class="event">
             <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}">
-                <span class="event">
+                <span class="event" title="{{ e.info.title }}">
                     {{ e.info.title|truncate(length=100) }}
                 </span>
             </a>
