@@ -97,5 +97,22 @@
     <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
 
 
+{% elif e.info.type == 'PullRequestReviewCommentEvent' %}
+
+    <p class="event-title">reviewed pull request <a href="https://github.com/{{ e.info.repo }}/pull/{{ e.info.number }}">
+    #{{ e.info.number }}</a> on <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+    <ul>
+        <li class="event">
+            <a href="{{ e.info.url }}">
+                <span class="event" title="{{ e.info.comment }}">
+                    {{ e.info.comment|truncate(length=100) }}
+                </span>
+            </a>
+        </li>
+    </ul>
+
+
 {% endif %}
 

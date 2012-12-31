@@ -173,5 +173,18 @@ def GistEvent(event):
     return info
 
 
+@event_handler
+def PullRequestReviewCommentEvent(event):
+    info = {
+        'repo': event['repo']['name'],
+        'comment': event['payload']['comment']['body'],
+        'url': event['payload']['comment']['_links']['html']['href'],
+    }
+
+    info['number'] = info['url'].rsplit('/', 1)[1].split('#')[0]
+
+    return info
+
+
 # Register our plugin
 GitHub('GitHub')
