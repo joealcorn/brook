@@ -155,7 +155,8 @@ def IssueCommentEvent(event):
         'action': event['payload']['action'],
         'repo': event['repo']['name'],
         'number': event['payload']['issue']['number'],
-        'comment_id': event['payload']['comment']['id']
+        'comment_id': event['payload']['comment']['id'],
+        'comment': event['payload']['comment']['body']
     }
 
     return info
