@@ -200,5 +200,16 @@ def GollumEvent(event):
     return info
 
 
+@event_handler
+def CommitCommentEvent(event):
+    info = {
+        'repo': event['repo']['name'],
+        'url': event['payload']['comment']['html_url'],
+        'comment': event['payload']['comment']['body'],
+        'commit_id': event['payload']['comment']['commit_id']
+    }
+
+    return info
+
 # Register our plugin
 GitHub('GitHub')

@@ -125,5 +125,22 @@
     <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
 
 
+{% elif e.info.type == 'CommitCommentEvent' %}
+
+    <p class="event-title">commented on commit <a href="https://github.com/{{ e.info.repo }}/commit/{{ e.info.commit_id }}">
+        {{ e.info.commit_id|truncate(length=7, killwords=True, end='') }}</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+    <ul>
+        <li class="event">
+            <a href="{{ e.info.url }}">
+                <span class="event" title="{{ e.info.comment }}">
+                    {{ e.info.comment|truncate(length=100) }}
+                </span>
+            </a>
+        </li>
+    </ul>
+
+
 {% endif %}
 
