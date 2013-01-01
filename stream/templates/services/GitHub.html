@@ -64,7 +64,7 @@
 
 {% elif e.info.type == 'DeleteEvent' %}
 
-    <p class="event-title">deleted branch {{ e.info.ref }} at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <p class="event-title">deleted {{ e.info.ref_type }} {{ e.info.ref }} at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
     <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
 
 {% elif e.info.type == 'ForkEvent' %}
