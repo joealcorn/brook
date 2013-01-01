@@ -114,5 +114,16 @@
     </ul>
 
 
+{% elif e.info.type == 'GollumEvent' %}
+
+    <p class="event-title">{{ e.info.action}} wiki page entitled <a href="{{ e.info.url }}">'{{ e.info.name }}'</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+
+    {% if e.info.amount != 0 %}
+        (and touched {{ e.info.amount }} more)
+    {% endif %}
+
+    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+
+
 {% endif %}
 

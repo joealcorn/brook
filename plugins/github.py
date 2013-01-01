@@ -187,5 +187,18 @@ def PullRequestReviewCommentEvent(event):
     return info
 
 
+@event_handler
+def GollumEvent(event):
+    info = {
+        'repo': event['repo']['name'],
+        'amount': len(event['payload']['pages']) - 1,
+        'action': event['payload']['pages'][0]['action'],
+        'name': event['payload']['pages'][0]['title'],
+        'url': event['payload']['pages'][0]['html_url'],
+    }
+
+    return info
+
+
 # Register our plugin
 GitHub('GitHub')
