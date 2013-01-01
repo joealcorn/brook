@@ -2,7 +2,7 @@
 
     <p class="event-title">pushed {{ e.info.amount }}
     {% if e.info.amount == 1 %}commit{% else %}commits{% endif %}
-    to <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    to {{ e.info.branch }} at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
     <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
 
 

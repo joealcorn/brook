@@ -58,6 +58,7 @@ def event_handler(func):
 def PushEvent(event):
     info = {
         'repo': event['repo']['name'],
+        'branch': event['payload']['ref'].rsplit('/', 1)[1],
         'amount': event['payload']['size'],
         'commits': event['payload']['commits']
     }
