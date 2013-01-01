@@ -47,17 +47,20 @@
 
 {% elif e.info.type == 'CreateEvent' %}
 
-    {% if e.info.ref_type == 'repository' %}
+    <p class="event-title">created new {{ e.info.ref_type }} 
 
-        <p class="event-title">created new repo at <a href="https://github.com/{{ e.info.repo }}/">{{ e.info.repo }}</a>
+        {% if e.info.ref_type == 'repository' %}
 
-    {% elif e.info.ref_type == 'branch' %}
+            at <a href="https://github.com/{{ e.info.repo }}/">{{ e.info.repo }}</a>
 
-        <p class="event-title">created new branch <a href="https://github.com/{{ e.info.repo }}/tree/{{ e.info.ref }}">{{ e.info.ref }}</a>
-        at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+        {% elif e.info.ref_type in ('branch', 'tag') %}
 
-    {% endif %}
-        <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+            <a href="https://github.com/{{ e.info.repo }}/tree/{{ e.info.ref }}">{{ e.info.ref }}</a>
+            at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+
+        {% endif %}
+        <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span>
+    </p>
 
 {% elif e.info.type == 'DeleteEvent' %}
 
