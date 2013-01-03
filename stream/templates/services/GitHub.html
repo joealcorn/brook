@@ -1,9 +1,11 @@
+{% from 'macros.html' import event_time %}
+
 {% if e.info.type == 'PushEvent' %}
 
-    <p class="event-title">pushed {{ e.info.amount }}
+    <h3 class="event-title">pushed {{ e.info.amount }}
     {% if e.info.amount == 1 %}commit{% else %}commits{% endif %}
     to {{ e.info.branch }} at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
 
     <ul>
@@ -20,20 +22,20 @@
 
 {% elif e.info.type == 'WatchEvent' %}
 
-    <p class="event-title">{% if e.info.action == 'started' %}starred{% else %}unstarred{% endif %}
+    <h3 class="event-title">{% if e.info.action == 'started' %}starred{% else %}unstarred{% endif %}
      <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
 {% elif e.info.type == 'FollowEvent' %}
 
-    <p class="event-title">followed <a href="https://github.com/{{ e.info.user }}">{{ e.info.user }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    <h3 class="event-title">followed <a href="https://github.com/{{ e.info.user }}">{{ e.info.user }}</a>
+    {{ event_time(e.time) }}</h3>
 
 {% elif e.info.type == 'IssuesEvent' %}
 
-    <p class="event-title">{{ e.info.action }} issue <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}">#{{ e.info.number }}</a>
+    <h3 class="event-title">{{ e.info.action }} issue <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}">#{{ e.info.number }}</a>
     on <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
     <ul>
         <li class="event">
@@ -47,7 +49,7 @@
 
 {% elif e.info.type == 'CreateEvent' %}
 
-    <p class="event-title">created new {{ e.info.ref_type }} 
+    <h3 class="event-title">created new {{ e.info.ref_type }} 
 
         {% if e.info.ref_type == 'repository' %}
 
@@ -59,30 +61,30 @@
             at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
 
         {% endif %}
-        <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span>
-    </p>
+        {{ event_time(e.time) }}
+    </h3>
 
 {% elif e.info.type == 'DeleteEvent' %}
 
-    <p class="event-title">deleted {{ e.info.ref_type }} {{ e.info.ref }} at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    <h3 class="event-title">deleted {{ e.info.ref_type }} {{ e.info.ref }} at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    {{ event_time(e.time) }}</h3>
 
 {% elif e.info.type == 'ForkEvent' %}
 
-    <p class="event-title">forked <a href="https://github.com/{{ e.info.forked_from }}">{{ e.info.forked_from }}</a>
+    <h3 class="event-title">forked <a href="https://github.com/{{ e.info.forked_from }}">{{ e.info.forked_from }}</a>
     to <a href="https://github.com/{{ e.info.fork }}">{{ e.info.fork }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
 {% elif e.info.type == 'PullRequestEvent' %}
 
-    <p class="event-title">{{ e.info.action }} pull request <a href="https://github.com/{{ e.info.repo }}/pull/{{ e.info.number }}">
+    <h3 class="event-title">{{ e.info.action }} pull request <a href="https://github.com/{{ e.info.repo }}/pull/{{ e.info.number }}">
     #{{ e.info.number }}</a> on <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
 {% elif e.info.type == 'IssueCommentEvent' %}
 
-    <p class="event-title">commented on issue <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}#issuecomment-{{ e.info.comment_id }}">#{{ e.info.number }}</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    <h3 class="event-title">commented on issue <a href="https://github.com/{{ e.info.repo }}/issues/{{ e.info.number }}#issuecomment-{{ e.info.comment_id }}">#{{ e.info.number }}</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    {{ event_time(e.time) }}</h3>
 
     <ul>
         <li class="event">
@@ -96,15 +98,15 @@
 
 {% elif e.info.type == 'GistEvent' %}
 
-    <p class="event-title">{{ e.info.action }}d gist <a href="{{ e.info.gist_url }}">#{{ e.info.gist_id }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    <h3 class="event-title">{{ e.info.action }}d gist <a href="{{ e.info.gist_url }}">#{{ e.info.gist_id }}</a>
+    {{ event_time(e.time) }}</h3>
 
 
 {% elif e.info.type == 'PullRequestReviewCommentEvent' %}
 
-    <p class="event-title">reviewed pull request <a href="https://github.com/{{ e.info.repo }}/pull/{{ e.info.number }}">
+    <h3 class="event-title">reviewed pull request <a href="https://github.com/{{ e.info.repo }}/pull/{{ e.info.number }}">
     #{{ e.info.number }}</a> on <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
     <ul>
         <li class="event">
@@ -119,20 +121,20 @@
 
 {% elif e.info.type == 'GollumEvent' %}
 
-    <p class="event-title">{{ e.info.action}} wiki page entitled <a href="{{ e.info.url }}">'{{ e.info.name }}'</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
+    <h3 class="event-title">{{ e.info.action}} wiki page entitled <a href="{{ e.info.url }}">'{{ e.info.name }}'</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
 
     {% if e.info.amount != 0 %}
         (and touched {{ e.info.amount }} more)
     {% endif %}
 
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
 
 {% elif e.info.type == 'CommitCommentEvent' %}
 
-    <p class="event-title">commented on commit <a href="https://github.com/{{ e.info.repo }}/commit/{{ e.info.commit_id }}">
+    <h3 class="event-title">commented on commit <a href="https://github.com/{{ e.info.repo }}/commit/{{ e.info.commit_id }}">
         {{ e.info.commit_id|truncate(length=7, killwords=True, end='') }}</a> at <a href="https://github.com/{{ e.info.repo }}">{{ e.info.repo }}</a>
-    <span class="timestamp"><time class="timeago" datetime="{{ e.time }}" title="{{ e.time }}">{{ e.time }}</time></span></p>
+    {{ event_time(e.time) }}</h3>
 
     <ul>
         <li class="event">

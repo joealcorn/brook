@@ -1,0 +1,5 @@
+{% macro event_time(time) -%}
+    <span class="timestamp">
+        <time class="timeago" datetime="{{ time }}" title="{{ time }}">{{ time }}</time>
+    </span>
+{%- endmacro %}

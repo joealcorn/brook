@@ -17,6 +17,17 @@ a:hover {
     text-decoration: underline;
 }
 
+h1, h2, h3,
+p {
+    font-weight: 400
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
+}
+
 p {
     font-size: 1.25em;
 }
@@ -33,11 +44,6 @@ li {
     position: absolute;
     background-color: #313238;
 }
-
-#title {
-    font-size: 1.5em;
-}
-
 
 .panel {
     padding-top: 70px;
@@ -60,7 +66,7 @@ li {
 }
 
 .list-header {
-    margin-top: 35px;
+    font-size: 20px;
 }
 
 .timestamp {
@@ -79,7 +85,7 @@ li.wrap-event div {
     margin-bottom: 25px;
 }
 
-p.event-title {
+.event-title {
     font-size: 0.89em;
     margin: 9px 0 2px;
 }
