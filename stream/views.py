@@ -17,9 +17,9 @@ def index():
         event.info = json.loads(event.info)
         times.append(event.time)
 
-    r = make_response(render_template('stream.html', events=events))
-    r.set_cookie('last_event',  max(times))
-    return r
+    response = make_response(render_template('stream.html', events=events))
+    response.set_cookie('last_event',  max(times))
+    return response
 
 
 @app.route('/update')
