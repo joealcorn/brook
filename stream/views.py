@@ -46,9 +46,11 @@ def update():
 
     info['amount'] = len(info['events'])
 
+    response = make_response(jsonify(info))
+    response.headers['Cache-Control'] = 'no-cache'
+
     if events == []:
-        return jsonify(info)
+        return response
     else:
-        r = make_response(jsonify(info))
-        r.set_cookie('last_event',  max(times))
-        return r
+        response.set_cookie('last_event',  max(times))
+        return response
