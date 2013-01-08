@@ -27,3 +27,4 @@ class Brook(db.Model):
 
 
 import stream.views
+import stream.filters
