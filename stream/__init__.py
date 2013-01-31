@@ -15,7 +15,7 @@ class Brook(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     service = db.Column(db.String(64), nullable=False)
-    info = db.Column(db.String(2048), nullable=False)
+    info = db.Column(db.String(9999), nullable=False)
     time = db.Column(db.DateTime, nullable=False)
     event_id = db.Column(db.String(128), nullable=False, unique=True)
 

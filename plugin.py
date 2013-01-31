@@ -18,7 +18,7 @@ class Brook(Base):
 
     id = Column(Integer, primary_key=True)
     service = Column(String(64), nullable=False)
-    info = Column(String(2048), nullable=False)
+    info = Column(String(9999), nullable=False)
     time = Column(DateTime, nullable=False)
     event_id = Column(String(128), nullable=False, unique=True)
 
