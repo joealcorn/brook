@@ -27,9 +27,8 @@ class GitHub(plugin.Plugin):
 
                 event_info = globals()[event['type']](event)
 
-                if not self._id_exists(event_info[0]):
-                    self.insert_data(*event_info)
-                else:
+                s = self.insert_data(*event_info)
+                if not s['success']:
                     # We're only going to find events
                     # we've already got in the DB
                     return

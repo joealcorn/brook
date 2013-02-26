@@ -2,8 +2,11 @@ import traceback
 from sys import path
 path.insert(0, '..')
 
-from brook.plugins import *
 from brook import plugin
+from brook.plugins import *
+from brook.models import Event
+
+Event.init_table()
 
 
 print 'Loaded plugins: {0}'.format(', '.join(x[0] for x in plugin.loaded))

@@ -1,7 +1,6 @@
 Flask==0.9
 Jinja2==2.6
-SQLAlchemy==0.7.9
 Werkzeug==0.8.3
 requests==0.14.2
 Flask-DebugToolbar==0.7.1
-Flask-SQLAlchemy==0.16
+psycopg2==2.4.6

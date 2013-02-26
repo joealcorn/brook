@@ -1,10 +1,10 @@
 # This file serves as both the plugin and web app configuration file
 
-
-# This should be any valid SQLAlchemy connection string
-# http://docs.sqlalchemy.org/en/rel_0_8/core/engines.html#database-urls
-# If using sqlite be sure to use an absolute path
-DATABASE = ''
+PG_DB = 'brook'
+PG_USER = ''
+PG_PASS = ''
+PG_HOST = 'localhost'
+PG_PORT = 5432
 
 
 # Web configuration
