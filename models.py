@@ -93,6 +93,7 @@ class Event(object):
         )
 
         events = cur.fetchall()
+        cur.close()
         return self._prep_data(events)
 
     @classmethod
@@ -106,4 +107,5 @@ class Event(object):
         )
 
         events = cur.fetchall()
+        cur.close()
         return self._prep_data(events)
